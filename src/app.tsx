@@ -5,14 +5,19 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import RootLayout from "./app/layout";
-import Home from "./app/(home)/page";
-import AkademisyenGiris from "./app/akademisyen/giris/page";
+import Home from "./app/(login)/(home)/page";
+import AkademisyenGiris from "./app/(login)/akademisyen/giris/page";
+import LoginLayout from "./app/(login)/layout";
+import OgrenciGiris from "./app/(login)/ogrenci/giris/page";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
-      <Route index element={<Home />}></Route>
-      <Route path="akademisyen/giris" element={<AkademisyenGiris />}></Route>
+      <Route path="/" element={<LoginLayout />}>
+        <Route index element={<Home />}></Route>
+        <Route path="akademisyen/giris" element={<AkademisyenGiris />}></Route>
+        <Route path="ogrenci/giris" element={<OgrenciGiris />}></Route>
+      </Route>
     </Route>
   )
 );
