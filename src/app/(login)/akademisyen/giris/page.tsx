@@ -1,3 +1,4 @@
+import { faPhone, faShield } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function AkademisyenGiris() {
@@ -5,7 +6,7 @@ function AkademisyenGiris() {
     <>
       <div className="input-group mt-4">
         <span className="input-group-text">
-          <FontAwesomeIcon icon="phone" />
+          <FontAwesomeIcon icon={faPhone} />
         </span>
         <input
           type="text"
@@ -17,7 +18,7 @@ function AkademisyenGiris() {
 
       <div className="input-group mt-2">
         <span className="input-group-text">
-          <FontAwesomeIcon icon="shield" />
+          <FontAwesomeIcon icon={faShield} />
         </span>
         <input
           type="password"
