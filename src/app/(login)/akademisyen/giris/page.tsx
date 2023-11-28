@@ -43,7 +43,9 @@ function AkademisyenGiris() {
             type="submit"
             className="btn btn-primary-2 fw-semibold w-100 w-md-auto"
           >
-            GİRİŞ YAP
+            <span style={{ viewTransitionName: "login-button" }}>
+              GİRİŞ YAP
+            </span>
           </button>
         </div>
       </div>

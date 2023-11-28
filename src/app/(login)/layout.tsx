@@ -4,7 +4,10 @@ import LoginAnimation from "../../components/animations/LoginAnimation";
 
 function LoginLayout() {
   return (
-    <div className="container" style={{ height: "100vh" }}>
+    <div
+      className="container"
+      style={{ height: "100vh", viewTransitionName: "login-form" }}
+    >
       <div className="row h-100 align-items-center">
         <div className="col-12 col-md-6 card p-4 m-auto my-auto shadow ">
           <div className="row">
