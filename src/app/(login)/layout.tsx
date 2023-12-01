@@ -12,7 +12,7 @@ function LoginLayout() {
               <div className="text-center my-4">
                 <LoginAnimation>
                   <img
-                    src="/images/logo-kucuk.png"
+                    src={`${process.env.PUBLIC_URL}/images/logo-kucuk.png`}
                     width="240"
                     alt="logo"
                     style={{ viewTransitionName: "login-logo" }}
