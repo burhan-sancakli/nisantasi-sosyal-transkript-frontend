@@ -1,7 +1,7 @@
 import { faPhone, faShield } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function OgrenciGiris() {
+function Staff() {
   return (
     <>
       <div className="input-group mt-4">
@@ -53,4 +53,4 @@ function OgrenciGiris() {
   );
 }
 
-export default OgrenciGiris;
+export default Staff;

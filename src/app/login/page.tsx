@@ -8,7 +8,7 @@ function Login() {
     <>
       <div>
         <Link
-          to="/akademisyen/giris"
+          to="/login/staff"
           className="btn btn-primary-2 w-100 fw-semibold p-3"
           unstable_viewTransition
           onClick={() => setAkademisyenClicked(true)}
@@ -21,7 +21,7 @@ function Login() {
       </div>
       <div className="mt-3">
         <Link
-          to="/ogrenci/giris"
+          to="/login/student"
           className="btn btn-success-2 w-100 fw-semibold p-3"
           role="button"
           unstable_viewTransition

@@ -1,8 +1,15 @@
 import "./layout.css";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import LoginAnimation from "../../components/animations/LoginAnimation";
+import { useSelector } from "react-redux";
+import { RootState } from "../../GlobalRedux/store";
 
 function LoginLayout() {
+  const user = useSelector((state: RootState) => state.user);
+  const token = useSelector((state: RootState) => state.token);
+  if (user.id !== -1 && token !== "") {
+    return <Navigate to={"/"} replace />;
+  }
   return (
     <div className="container" style={{ height: "100vh" }}>
       <div className="row h-100 align-items-center">
