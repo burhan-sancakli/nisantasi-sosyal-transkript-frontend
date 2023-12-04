@@ -5,40 +5,41 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../../GlobalRedux/features/user/userSlice";
 import { User } from "../../../types";
 import { setToken } from "../../../GlobalRedux/features/token/tokenSlice";
-import { useNavigate } from "react-router-dom";
-import { RootState } from "../../../GlobalRedux/store";
 
 function Student() {
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [response, setResponse] = useState<undefined | any>(undefined);
+  const [response, setResponse] = useState<undefined | "error" | any>(
+    undefined
+  );
 
   const handleLogin = async () => {
     try {
-      const request = await fetch("http://localhost:8000/api/login", {
+      const request = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
         method: "POST",
+        headers: {
+          Accept: "application/json",
+          // add other headers if needed
+        },
         body: new URLSearchParams({
           email: username,
           password: password,
         }),
       });
-
       if (!request.ok) {
-        setResponse(undefined);
-        alert("Giriş bilgileri yanlış, tekrar deneyin.");
+        setResponse("error");
       } else {
         const responseData = await request.json();
         setResponse(responseData);
       }
     } catch (error) {
-      console.error("Error during login:", error);
-      alert("Giriş bilgileri yanlış, tekrar deneyin.");
+      setResponse("error");
     }
   };
 
   useEffect(() => {
-    if (response) {
+    if (response && response !== "error") {
       const user: User = response.user;
       const token: string = response.authorisation.token;
       dispatch(setUser(user));
@@ -96,6 +97,11 @@ function Student() {
             </span>
           </button>
         </div>
+        {response === "error" ? (
+          <h5>Giriş bilgilerinizi kontrol edin!</h5>
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );
