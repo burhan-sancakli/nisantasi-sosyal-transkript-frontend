@@ -2,13 +2,14 @@ import { faPhone, faShield } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../../../GlobalRedux/features/user/userSlice";
+
 import { User } from "../../../types";
 import { setToken } from "../../../GlobalRedux/features/token/tokenSlice";
+import { setUser } from "../../../GlobalRedux/features/user/userSlice";
 
 function Student() {
   const dispatch = useDispatch();
-  const [username, setUsername] = useState("");
+  const [universityId, setUniversityId] = useState("");
   const [password, setPassword] = useState("");
   const [response, setResponse] = useState<undefined | "error" | any>(
     undefined
@@ -20,11 +21,11 @@ function Student() {
         method: "POST",
         headers: {
           Accept: "application/json",
-          // add other headers if needed
         },
         body: new URLSearchParams({
-          email: username,
+          university_id: universityId,
           password: password,
+          is_staff: "0",
         }),
       });
       if (!request.ok) {
@@ -55,10 +56,10 @@ function Student() {
         <input
           type="text"
           className="form-control telefon"
-          name="telefon"
-          placeholder="Telefon Numarası"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          name="university-id"
+          placeholder="Üniversite ID"
+          value={universityId}
+          onChange={(e) => setUniversityId(e.target.value)}
         />
       </div>
 
@@ -70,7 +71,7 @@ function Student() {
           type="password"
           className="form-control"
           name="sifre"
-          placeholder="Şifre"
+          placeholder="Sanalkampüs şifresi"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
