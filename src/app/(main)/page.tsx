@@ -52,7 +52,7 @@ function Main() {
       <div>
         <form onSubmit={handleSubmit}>
           <label>
-            Sosyal Etkinlik ismi:
+            Sosyal Etkinlik Adı:
             <input
               type="text"
               name="name"
@@ -62,12 +62,12 @@ function Main() {
           </label>
           <br />
           <label>
-            File:
+            Gerekli Belge:
             <input type="file" name="file" onChange={handleFileChange} />
           </label>
           <br />
 
-          <button type="submit">Submit</button>
+          <button type="submit">Yükle</button>
         </form>
       </div>
       <div>

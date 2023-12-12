@@ -3,85 +3,85 @@ import React from "react";
 const activities = [
   {
     id: 1,
-    name: "Social Activity",
+    name: "Sosyal Faaliyet",
     startDate: "2023-08-11",
     endDate: "2023-09-11",
   },
   {
     id: 2,
-    name: "Entrepreneurship",
+    name: "Girişimcilik",
     startDate: "2023-08-15",
     endDate: "2023-09-15",
   },
   {
     id: 3,
-    name: "Founding Company",
+    name: "Firma Kurulması",
     startDate: "2023-08-20",
     endDate: "2023-09-28",
   },
   {
     id: 4,
-    name: "Applying for Patent",
+    name: "Patent Başvurusu Yapılması",
     startDate: "2023-09-01",
     endDate: "2023-09-28",
   },
   {
     id: 5,
-    name: "Securing Patent",
+    name: "Patent Alınması",
     startDate: "2023-10-01",
     endDate: "2023-10-15",
   },
   {
     id: 6,
-    name: "Student Community Event",
+    name: "Öğrenci Topluluğu Faaliyeti",
     startDate: "2023-09-10",
     endDate: "2023-10-10",
   },
   {
     id: 7,
-    name: "Social Awareness",
+    name: "Sosyal Sorumluluk",
     startDate: "2023-09-15",
     endDate: "2023-10-15",
   },
   {
     id: 8,
-    name: "Voluntary Work",
+    name: "Gönüllü Faaliyet",
     startDate: "2023-10-01",
     endDate: "2023-10-31",
   },
   {
     id: 9,
-    name: "Cultural Activity",
+    name: "Kültürel Etkinlik",
     startDate: "2023-10-15",
     endDate: "2023-11-15",
   },
   {
     id: 10,
-    name: "Environmentalism",
+    name: "Sürdürülebilirlik",
     startDate: "2023-11-01",
     endDate: "2023-11-30",
   },
   {
     id: 11,
-    name: "Sports Activity",
+    name: "Spor Etkinliği",
     startDate: "2023-11-15",
     endDate: "2023-12-15",
   },
   {
     id: 12,
-    name: "Scientific",
+    name: "Bilimsel Etkinlik",
     startDate: "2023-12-01",
     endDate: "2023-12-31",
   },
   {
     id: 13,
-    name: "Internship",
+    name: "Teknopark Stajı",
     startDate: "2023-12-10",
     endDate: "2024-01-10",
   },
   {
     id: 14,
-    name: "Tübitak Project",
+    name: "Tübitak Projesi",
     startDate: "2023-12-15",
     endDate: "2024-02-29",
   },
@@ -93,10 +93,10 @@ const ActivityTable = () => {
       <thead>
         <tr>
           <th>ID</th>
-          <th>Name</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Apply</th>
+          <th>Faaliyet Adı</th>
+          <th>Başvuru Başlangıç Tarihi</th>
+          <th>Başvuru Bitiş Tarihi</th>
+          <th>Başvurma Durumu</th>
         </tr>
       </thead>
       <tbody>
@@ -108,7 +108,7 @@ const ActivityTable = () => {
             <td>{activity.endDate}</td>
             <td>
               <button className="btn btn-primary" disabled>
-                Apply
+                Başvur
               </button>
             </td>
           </tr>
