@@ -14,6 +14,7 @@ import Staff from "./app/login/staff/page";
 import Student from "./app/login/student/page";
 import Login from "./app/login/page";
 import { ReduxProvider } from "./GlobalRedux/ReduxProvider";
+import { useEffect } from "react";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -38,6 +39,9 @@ const router = createBrowserRouter(
 );
 
 function App() {
+  useEffect(() => {
+    document.title = "Nişantaşı Sosyal Transkript Sistemi";
+  }, []);
   return (
     <ReduxProvider>
       <RouterProvider router={router} />
