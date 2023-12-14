@@ -8,7 +8,7 @@ function MainLayout() {
   const dispatch = useDispatch();
   return (
     <>
-      <Navbar expand="lg" className="bg-primary" data-bs-theme="dark">
+      <Navbar expand="lg" variant="light" style={{ backgroundColor: 'black' }}>
         <Container>
           <Navbar.Brand href="#home">Nişantaşı Üniversitesi</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
