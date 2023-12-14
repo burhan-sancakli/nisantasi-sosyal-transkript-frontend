@@ -62,6 +62,15 @@ function Main() {
           </label>
           <br />
           <label>
+            Not:
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
             Gerekli Belge:
             <input type="file" name="file" onChange={handleFileChange} />
           </label>
