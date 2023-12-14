@@ -81,7 +81,7 @@ function Student() {
         <div className="col-12 col-md-6 col-lg-auto">
           <button
             type="submit"
-            className="btn btn-primary-2 fw-semibold w-100 w-ml-auto"
+            className="btn btn-primary-2 fw-semibold w-100 w-md-auto ml-auto"
             onClick={handleLogin}
           >
             <span style={{ viewTransitionName: "login-button" }}>
