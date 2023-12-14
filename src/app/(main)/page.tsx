@@ -65,8 +65,8 @@ function Main() {
             Not:
             <input
               type="text"
-              name="name"
-              value={formData.name}
+              name="note"
+              value={formData.note}
               onChange={handleChange}
             />
           </label>
