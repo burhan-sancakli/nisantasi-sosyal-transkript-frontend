@@ -203,6 +203,36 @@ function Main() {
 
           <button type="submit">Yükle</button>
         </form>
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Başvuru No</th>
+              <th>Sosyal Etkinlik Adı</th>
+              <th>Kategori</th>
+              <th>Başvuru Tarihi</th>
+              <th>Başvuru Durumu</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>27122301</td>
+              <td>Deneme 1</td>
+              <td>Patent başvurusunda bulunmak</td>
+              <td>2023-09-11</td>
+              <td>İnceleme Bekliyor</td>
+              <td><button class="btn btn-primary">Düzenle</button></td>
+            </tr>
+            <tr>
+              <td>27122302</td>
+              <td>Deneme 2</td>
+              <td>BAP projelerinde araştırmacı olmak</td>
+              <td>2023-09-15</td>
+              <td>İnceleme Bekliyor</td>
+              <td><button class="btn btn-primary">Düzenle</button></td>
+            </tr>
+          </tbody>
+          </table>
       </div>
     </>
   );
