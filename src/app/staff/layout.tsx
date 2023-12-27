@@ -4,7 +4,7 @@ import { clearToken } from "../../GlobalRedux/features/token/tokenSlice";
 import { clearUser } from "../../GlobalRedux/features/user/userSlice";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import LoginAnimation from "../../components/animations/LoginAnimation";
-function MainLayout() {
+function StaffLayout() {
   const dispatch = useDispatch();
   return (
     <>
@@ -53,4 +53,4 @@ function MainLayout() {
     </>
   );
 }
-export default MainLayout;
+export default StaffLayout;

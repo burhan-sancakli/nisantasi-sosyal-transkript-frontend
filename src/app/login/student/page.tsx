@@ -79,13 +79,13 @@ function Student() {
 
       <div className="row mt-3 justify-content-between">
         <div className="col-12 col-md-6 col-lg-auto d-flex align-items-center">
-          <a
+          {/*<a
             href="#"
             id="sifreGonder"
             className="btn btn-sm fw-semibold w-100 w-md-auto"
           >
             Şifremi Unuttum
-          </a>
+          </a>*/}
         </div>
         <div className="col-12 col-md-6 col-lg-auto">
           <button

@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { RootState } from "../GlobalRedux/store";
 
-const ProtectedRoute = ({
+const StudentRoute = ({
   redirectPath = "/login",
   children,
 }: {
@@ -11,9 +11,9 @@ const ProtectedRoute = ({
 }) => {
   const user = useSelector((state: RootState) => state.user);
   const token = useSelector((state: RootState) => state.token);
-  if (user.id === -1 || token === "") {
+  if (user.id === -1 || token === "" || user.is_staff) {
     return <Navigate to={redirectPath} replace />;
   }
   return children;
 };
-export default ProtectedRoute;
+export default StudentRoute;

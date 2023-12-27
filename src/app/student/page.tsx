@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import { RootState } from "../../GlobalRedux/store";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import ActivityTable from "../../components/ActivityTable";
+import StudentActivitiesTable from "../../components/StudentActivitiesTable";
 
 interface Activity {
   name: "Social" | "Cultural" | "Scientific";
 }
 
-function Main() {
+function StudentPage() {
   const user = useSelector((state: RootState) => state.user);
 
   const [formData, setFormData] = useState({
@@ -47,33 +47,12 @@ function Main() {
   return (
     <>
       <div>
-        <h1>Hoşgeldin {user.name}</h1>
+        <h1>Transkript Sayfası</h1>
       </div>
       <div>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Sosyal Etkinlik Adı:
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Gerekli Belge:
-            <input type="file" name="file" onChange={handleFileChange} />
-          </label>
-          <br />
-
-          <button type="submit">Yükle</button>
-        </form>
-      </div>
-      <div>
-        <ActivityTable></ActivityTable>
+        <StudentActivitiesTable></StudentActivitiesTable>
       </div>
     </>
   );
 }
-export default Main;
+export default StudentPage;
