@@ -29,6 +29,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "startpublic": "set PUBLIC_URL=&&set REACT_APP_API_URL=https://sosyaltranskript.nisantasi.edu.tr/api&&react-scripts start",
     "start": "set PUBLIC_URL=&&set REACT_APP_API_URL=http://localhost:8000/api&&react-scripts start",
     "build": "set PUBLIC_URL=https://sosyaltranskript.nisantasi.edu.tr/react/build&&set REACT_APP_API_URL=https://sosyaltranskript.nisantasi.edu.tr/api&&react-scripts build",
     "test": "set PUBLIC_URL=&&set REACT_APP_API_URL=http://localhost:8000/api&&react-scripts test",
