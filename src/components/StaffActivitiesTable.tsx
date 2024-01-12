@@ -1,149 +1,79 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
-interface Activity {
-  id: number;
-  studentUniversityId: string;
-  studentName: string;
-  name: string;
-  startDate: string;
-  endDate: string;
-}
+import { Application } from "../types";
 
-const activities: Activity[] = [
-  {
-    id: 1,
-    studentUniversityId: "20202022083",
-    studentName: "Burhan Sancaklı",
-    name: "Sosyal Faaliyet",
-    startDate: "2023-08-11",
-    endDate: "2023-09-11",
-  },
-  {
-    id: 2,
-    studentUniversityId: "20202022083",
-    studentName: "Burhan Sancaklı",
-    name: "Girişimcilik",
-    startDate: "2023-08-15",
-    endDate: "2023-09-15",
-  },
-  {
-    id: 3,
-    studentUniversityId: "20202022083",
-    studentName: "Burhan Sancaklı",
-    name: "Firma Kurulması",
-    startDate: "2023-08-20",
-    endDate: "2023-09-28",
-  },
-  {
-    id: 4,
-    studentUniversityId: "20202022083",
-    studentName: "Burhan Sancaklı",
-    name: "Patent Başvurusu Yapılması",
-    startDate: "2023-09-01",
-    endDate: "2023-09-28",
-  },
-  {
-    id: 5,
-    studentUniversityId: "20202022083",
-    studentName: "Burhan Sancaklı",
-    name: "Patent Alınması",
-    startDate: "2023-10-01",
-    endDate: "2023-10-15",
-  },
-  {
-    id: 6,
-    studentUniversityId: "20202022083",
-    studentName: "Burhan Sancaklı",
-    name: "Öğrenci Topluluğu Faaliyeti",
-    startDate: "2023-09-10",
-    endDate: "2023-10-10",
-  },
-  {
-    id: 7,
-    studentUniversityId: "20202022083",
-    studentName: "Burhan Sancaklı",
-    name: "Sosyal Sorumluluk",
-    startDate: "2023-09-15",
-    endDate: "2023-10-15",
-  },
-  {
-    id: 8,
-    studentUniversityId: "20202022083",
-    studentName: "Burhan Sancaklı",
-    name: "Gönüllü Faaliyet",
-    startDate: "2023-10-01",
-    endDate: "2023-10-31",
-  },
-  {
-    id: 9,
-    studentUniversityId: "20202022083",
-    studentName: "Burhan Sancaklı",
-    name: "Kültürel Etkinlik",
-    startDate: "2023-10-15",
-    endDate: "2023-11-15",
-  },
-  {
-    id: 10,
-    studentUniversityId: "20202022083",
-    studentName: "Burhan Sancaklı",
-    name: "Sürdürülebilirlik",
-    startDate: "2023-11-01",
-    endDate: "2023-11-30",
-  },
-  {
-    id: 11,
-    studentUniversityId: "20202022083",
-    studentName: "Burhan Sancaklı",
-    name: "Spor Etkinliği",
-    startDate: "2023-11-15",
-    endDate: "2023-12-15",
-  },
-  {
-    id: 12,
-    studentUniversityId: "20202022083",
-    studentName: "Burhan Sancaklı",
-    name: "Bilimsel Etkinlik",
-    startDate: "2023-12-01",
-    endDate: "2023-12-31",
-  },
-  {
-    id: 13,
-    studentUniversityId: "20202022083",
-    studentName: "Burhan Sancaklı",
-    name: "Teknopark Stajı",
-    startDate: "2023-12-10",
-    endDate: "2024-01-10",
-  },
-  {
-    id: 14,
-    studentUniversityId: "20202022083",
-    studentName: "Burhan Sancaklı",
-    name: "Tübitak Projesi",
-    startDate: "2023-12-15",
-    endDate: "2024-02-29",
-  },
-];
-
-const StaffActivitiesTable = () => {
+const StaffActivitiesTable = ({
+  data,
+  token,
+}: {
+  data: Application[] | undefined;
+  token: string;
+}) => {
   const [showModal, setShowModal] = useState(false);
-  const [selectedActivity, setSelectedActivity] = useState<Activity | null>(
-    null
-  );
+  const [selectedApplication, setSelectedApplication] =
+    useState<Application | null>(null);
   const [isConfirmation, setIsConfirmation] = useState(true);
+  const [conclusion, setConclusion] = useState("");
 
-  const handleClick = (activity: Activity, confirmation = false) => {
+  const handleClick = (application: Application, confirmation = false) => {
     setIsConfirmation(confirmation);
-    setSelectedActivity(activity);
+    setSelectedApplication(application);
     setShowModal(true);
   };
 
   const handleConfirm = () => {
     // Handle confirmation logic here
     setShowModal(false);
+    if (!selectedApplication) {
+      console.log("no selected application", selectedApplication);
+      return;
+    }
+    fetch(
+      `${process.env.REACT_APP_API_URL}/applications/${selectedApplication.id}/accept`,
+      {
+        method: "POST",
+        headers: {
+          authorization: `Bearer ${token}`,
+          accept: "application/json",
+        },
+      }
+    ) // Replace with the correct URL to your Laravel API
+      .then((response) => response.json())
+      .then((data) => {
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("Error fetching data: ", error);
+      });
   };
   const handleReject = () => {
     // Handle rejection logic here
     setShowModal(false);
+    if (!selectedApplication) {
+      console.log("no selected application", selectedApplication);
+      return;
+    }
+    // Create a FormData object and append the necessary data
+    const formData = new FormData();
+    formData.append("conclusion", conclusion);
+    fetch(
+      `${process.env.REACT_APP_API_URL}/applications/${selectedApplication.id}/reject`,
+      {
+        method: "POST",
+        headers: {
+          authorization: `Bearer ${token}`,
+          accept: "application/json",
+        },
+        body: formData,
+      }
+    ) // Replace with the correct URL to your Laravel API
+      .then((response) => response.json())
+      .then((data) => {
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("Error fetching data: ", error);
+      });
   };
 
   const handleCancel = () => {
@@ -161,30 +91,32 @@ const StaffActivitiesTable = () => {
             <th>Başvuru Dosyası</th>
             <th>Başvuru Başlangıç Tarihi</th>
             <th>Başvuru Bitiş Tarihi</th>
+            <th>İtiraz Gerekçesi</th>
             <th colSpan={2}>Başvuru Aksiyonları</th>
           </tr>
         </thead>
         <tbody>
-          {activities.map((activity) => (
-            <tr key={activity.id}>
-              <td>{activity.id}</td>
-              <td>{activity.studentUniversityId}</td>
-              <td>{activity.studentName}</td>
-              <td>{activity.name}</td>
+          {data?.map((application) => (
+            <tr key={application.id}>
+              <td>{application.id}</td>
+              <td>{application.studentUniversityId}</td>
+              <td>{application.studentName}</td>
+              <td>{application.name}</td>
               <td>
                 <a
                   href="https://sosyaltranskript.nisantasi.edu.tr/react/build/files/Sosyal%20Faaliyet__2023-09-11.pdf"
                   target="_blank"
                 >
-                  {activity.name + "__" + activity.endDate}.pdf
+                  {application.name + "__" + application.endDate}.pdf
                 </a>
               </td>
-              <td>{activity.startDate}</td>
-              <td>{activity.endDate}</td>
+              <td>{application.startDate}</td>
+              <td>{application.endDate}</td>
+              <td>{application.objection}</td>
               <td className="p-0">
                 <button
                   className="btn btn-primary"
-                  onClick={() => handleClick(activity, true)}
+                  onClick={() => handleClick(application, true)}
                 >
                   Onayla
                 </button>
@@ -192,7 +124,7 @@ const StaffActivitiesTable = () => {
               <td className="p-0">
                 <button
                   className="btn btn-danger"
-                  onClick={() => handleClick(activity, false)}
+                  onClick={() => handleClick(application, false)}
                 >
                   Reddet
                 </button>
@@ -209,8 +141,8 @@ const StaffActivitiesTable = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          "{selectedActivity?.studentName}" adlı kullanıcının gönderdiği "
-          {selectedActivity?.name}" adlı aktivite başvurusunu{" "}
+          "{selectedApplication?.studentName}" adlı kullanıcının gönderdiği "
+          {selectedApplication?.name}" adlı aktivite başvurusunu{" "}
           {isConfirmation ? "onaylamak" : "reddetmek"} istediğinizden emin
           misiniz?
         </Modal.Body>
@@ -220,9 +152,23 @@ const StaffActivitiesTable = () => {
               Onayla
             </Button>
           ) : (
-            <Button variant="danger" onClick={handleReject}>
-              Reddet
-            </Button>
+            <>
+              <Modal.Body>
+                <div>
+                  <label>Reddetme Sebebi</label>
+                  <br />
+                  <textarea
+                    cols={50}
+                    rows={10}
+                    value={conclusion} // ...force the input's value to match the state variable...
+                    onChange={(e) => setConclusion(e.target.value)} // ... and update the state variable on any edits!
+                  ></textarea>
+                </div>
+              </Modal.Body>
+              <Button variant="danger" onClick={handleReject}>
+                Reddet
+              </Button>
+            </>
           )}
           <Button variant="secondary" onClick={handleCancel}>
             İptal Et
