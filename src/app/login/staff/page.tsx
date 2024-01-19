@@ -5,9 +5,11 @@ import { setUser } from "../../../GlobalRedux/features/user/userSlice";
 import { setToken } from "../../../GlobalRedux/features/token/tokenSlice";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 function Staff() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const [universityId, setUniversityId] = useState("");
   const [password, setPassword] = useState("");
   const [response, setResponse] = useState<undefined | "error" | any>(
@@ -56,7 +58,7 @@ function Staff() {
           type="text"
           className="form-control telefon"
           name="university-id"
-          placeholder="Telefon Numarası"
+          placeholder={t("loginPageStaff.universityId")}
           value={universityId}
           onChange={(e) => setUniversityId(e.target.value)}
         />
@@ -70,7 +72,7 @@ function Staff() {
           type="password"
           className="form-control"
           name="sifre"
-          placeholder="Şifre"
+          placeholder={t("loginPageStaff.password")}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -93,7 +95,7 @@ function Staff() {
             onClick={handleLogin}
           >
             <span style={{ viewTransitionName: "login-button" }}>
-              GİRİŞ YAP
+              {t("loginPageStaff.login")}
             </span>
           </button>
         </div>
