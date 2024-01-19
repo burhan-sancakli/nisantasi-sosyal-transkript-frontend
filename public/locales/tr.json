@@ -3,7 +3,6 @@
     "staff": "AKADEMİSYEN GİRİŞİ",
     "student": "ÖĞRENCİ GİRİŞİ"
   },
-  
   "loginPageStudent": {
     "universityId": "Üniversite ID",
     "password": "Sanalkampüs şifresi",
@@ -15,4 +14,8 @@
     "password": "Şifre",
     "loginButton": "GİRİŞ YAP"
   },
+  "loginLayout": {
+    "systemName": "Sosyal Transkript Sistemi",
+    "copyright": "Telif Hakkı İstanbul Nişantaşı Üniversitesi 2023"
+  }
 }
