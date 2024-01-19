@@ -1,0 +1,38 @@
+{
+  "loginPage": {
+    "staff": "STAFF LOGIN",
+    "student": "STUDENT LOGIN"
+  },
+  "loginPageStudent": {
+    "universityId": "University ID",
+    "password": "Password",
+    "loginButton": "LOGIN",
+    "checkLoginInfo": "Please check your login information!"
+  },
+  "loginPageStaff": {
+    "universityId": "University ID",
+    "password": "Password",
+    "loginButton": "LOGIN"
+  },
+  "loginLayout": {
+    "systemName": "Social Transcript System",
+    "copyright": "Copyright İstanbul Nişantaşı Üniversitesi 2023"
+  },
+  "studentPage": {
+    "pageTitle": "Transcript Page"
+  },
+  "studentLayout": {
+    "universityName": "Nişantaşı University",
+    "newApplication": "New Application",
+    "myApplications": "My Applications",
+    "logout": "Logout"
+  },
+  "studentNewPage": {
+    "pageTitle": "New Application Page",
+    "activityTypeLabel": "Activity Type",
+    "activityLabel": "Selected Activity",
+    "uploadLabel": "Upload Document",
+    "submitButton": "Send",
+    "selectedDocument": "Selected Document"
+  }
+}
