@@ -4,13 +4,16 @@ import { clearToken } from "../../GlobalRedux/features/token/tokenSlice";
 import { clearUser } from "../../GlobalRedux/features/user/userSlice";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import LoginAnimation from "../../components/animations/LoginAnimation";
+import { useTranslation } from "react-i18next";
+
 function StudentLayout() {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   return (
     <>
       <Navbar expand="lg" className="bg-primary" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">Nişantaşı Üniversitesi</Navbar.Brand>
+          <Navbar.Brand href="#home">{t("studentLayout.universityName")}</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="justify-content-between w-100">
@@ -29,14 +32,14 @@ function StudentLayout() {
                   className="nav-link btn btn-primary text-white fw-semibold py-2 px-3 my-auto"
                   unstable_viewTransition
                 >
-                  Yeni Başvuru
+                  {t("studentLayout.newApplication")}
                 </Link>
                 <Link
                   to="/student/"
                   className="nav-link btn btn-primary text-white fw-semibold py-2 px-3 my-auto"
                   unstable_viewTransition
                 >
-                  Başvurularım
+                  {t("studentLayout.myApplications")}
                 </Link>
 
                 <a
@@ -50,7 +53,7 @@ function StudentLayout() {
                     dispatch(clearUser());
                   }}
                 >
-                  Çıkış Yap
+                  {t("studentLayout.logout")}
                 </a>
               </div>
             </Nav>
