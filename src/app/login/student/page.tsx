@@ -1,5 +1,6 @@
 import { faPhone, faShield } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -9,6 +10,7 @@ import { setUser } from "../../../GlobalRedux/features/user/userSlice";
 
 function Student() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const [universityId, setUniversityId] = useState("");
   const [password, setPassword] = useState("");
   const [response, setResponse] = useState<undefined | "error" | any>(
@@ -57,7 +59,7 @@ function Student() {
           type="text"
           className="form-control telefon"
           name="university-id"
-          placeholder="Üniversite ID"
+          placeholder={t("loginPageStudent.universityId")}
           value={universityId}
           onChange={(e) => setUniversityId(e.target.value)}
         />
@@ -71,7 +73,7 @@ function Student() {
           type="password"
           className="form-control"
           name="sifre"
-          placeholder="Sanalkampüs şifresi"
+          placeholder={t("loginPageStudent.password")}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -94,12 +96,12 @@ function Student() {
             onClick={handleLogin}
           >
             <span style={{ viewTransitionName: "login-button" }}>
-              GİRİŞ YAP
+              {t("loginPageStudent.login")}
             </span>
           </button>
         </div>
         {response === "error" ? (
-          <h5>Giriş bilgilerinizi kontrol edin!</h5>
+          <h5>{t("loginPageStudent.error")}</h5>
         ) : (
           <></>
         )}
