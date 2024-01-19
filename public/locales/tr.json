@@ -2,5 +2,17 @@
   "loginPage": {
     "staff": "AKADEMİSYEN GİRİŞİ",
     "student": "ÖĞRENCİ GİRİŞİ"
-  }
+  },
+  
+  "loginPageStudent": {
+    "universityId": "Üniversite ID",
+    "password": "Sanalkampüs şifresi",
+    "loginButton": "GİRİŞ YAP",
+    "checkLoginInfo": "Giriş bilgilerinizi kontrol edin!"
+  },
+  "loginPageStaff": {
+    "universityId": "Üniversite ID",
+    "password": "Şifre",
+    "loginButton": "GİRİŞ YAP"
+  },
 }
