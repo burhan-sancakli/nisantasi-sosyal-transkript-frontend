@@ -4,8 +4,10 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import StudentApplicationsTable from "../../components/StudentApplicationsTable";
 import { Application } from "../../types";
+import { useTranslation } from "react-i18next";
 
 function StudentPage() {
+  const { t } = useTranslation();
   const user = useSelector((state: RootState) => state.user);
   const token = useSelector((state: RootState) => state.token);
 
@@ -55,7 +57,7 @@ function StudentPage() {
   return (
     <>
       <div>
-        <h1>Transkript Sayfası</h1>
+        <h1>{t("studentPage.pageTitle")}</h1>
       </div>
       <div>
         <StudentApplicationsTable
