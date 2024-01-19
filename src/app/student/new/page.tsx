@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { ChangeEvent, useEffect, useState } from "react";
 import { RootState } from "../../../GlobalRedux/store";
+import { useTranslation } from "react-i18next";
 
 interface Activity {
   id: number;
@@ -16,6 +17,7 @@ interface ActivityType {
 }
 
 function StudentNewPage() {
+  const { t } = useTranslation();
   const user = useSelector((state: RootState) => state.user);
   const token = useSelector((state: RootState) => state.token);
   const [activities, setActivities] = useState<ActivityType[]>([
@@ -123,10 +125,10 @@ function StudentNewPage() {
   return (
     <form onSubmit={handleSubmission}>
       <div>
-        <h1>Yeni Başvuru Sayfası</h1>
+        <h1>{t("studentNewPage.pageTitle")}</h1>
 
         <label>
-          Faaliyet Türü
+          {t("studentNewPage.activityTypeLabel")}
           <select value={activityType?.id} onChange={handleActivityTypeChange}>
             {activities.map((activity) => (
               <option key={activity.id} value={activity.id}>
@@ -143,7 +145,7 @@ function StudentNewPage() {
           <>
             {activityType && (
               <label>
-                Faaliyet seçimi:
+                {t("studentNewPage.activityLabel")}
                 <select value={activity?.id} onChange={handleActivityChange}>
                   <option value=""></option>
                   {activityType.children.map((activity) => (
@@ -163,7 +165,7 @@ function StudentNewPage() {
         ) : (
           <>
             <label>
-              Belgeyi Yükle
+              {t("studentNewPage.uploadLabel")}
               <input
                 type="file"
                 onChange={handleFileChange}
@@ -171,11 +173,11 @@ function StudentNewPage() {
               />
             </label>
             {/* Display the file name if a file is selected */}
-            {activityFile && <p>Seçili belge: {activityFile.name}</p>}
+            {activityFile && <p>{t("studentNewPage.selectedDocument")}: {activityFile.name}</p>}
           </>
         )}
 
-        {!activityFile ? <></> : <button type="submit">Gönder</button>}
+        {!activityFile ? <></> : <button type="submit">{t("studentNewPage.submitButton")}</button>}
       </div>
     </form>
   );
