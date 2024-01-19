@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 function Login() {
+  const { t } = useTranslation();
   const [ogrenciClicked, setOgrenciClicked] = useState(false);
   const [akademisyenClicked, setAkademisyenClicked] = useState(false);
   return (
@@ -16,7 +18,7 @@ function Login() {
             viewTransitionName: akademisyenClicked ? "login-button" : "",
           }}
         >
-          AKADEMİSYEN GİRİŞİ
+          {t('loginPage.staff')}
         </Link>
       </div>
       <div className="mt-3">
@@ -28,7 +30,7 @@ function Login() {
           onClick={() => setOgrenciClicked(true)}
           style={{ viewTransitionName: ogrenciClicked ? "login-button" : "" }}
         >
-          ÖĞRENCİ GİRİŞİ
+          {t('loginPage.student')}
         </Link>
       </div>
     </>
