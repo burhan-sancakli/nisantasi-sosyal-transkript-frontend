@@ -17,5 +17,22 @@
   "loginLayout": {
     "systemName": "Sosyal Transkript Sistemi",
     "copyright": "Telif Hakkı İstanbul Nişantaşı Üniversitesi 2023"
+  },
+  "studentPage": {
+    "pageTitle": "Transkript Sayfası"
+  },
+  "studentLayout": {
+    "universityName": "Nişantaşı University",
+    "newApplication": "New Application",
+    "myApplications": "My Applications",
+    "logout": "Logout"
+  },
+  "studentNewPage": {
+    "pageTitle": "Yeni Başvuru Sayfası",
+    "activityTypeLabel": "Faaliyet Türü",
+    "activityLabel": "Faaliyet Seçimi",
+    "uploadLabel": "Belgeyi Yükle",
+    "submitButton": "Gönder",
+    "selectedDocument": "Seçili Belge"
   }
 }
