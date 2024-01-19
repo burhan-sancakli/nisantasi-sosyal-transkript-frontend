@@ -3,8 +3,10 @@ import { Navigate, Outlet } from "react-router-dom";
 import LoginAnimation from "../../components/animations/LoginAnimation";
 import { useSelector } from "react-redux";
 import { RootState } from "../../GlobalRedux/store";
+import { useTranslation } from "react-i18next";
 
 function LoginLayout() {
+  const { t } = useTranslation();
   const user = useSelector((state: RootState) => state.user);
   const token = useSelector((state: RootState) => state.token);
   if (user.id !== -1 && token !== "") {
@@ -36,7 +38,7 @@ function LoginLayout() {
                   className="opacity-50"
                   style={{ viewTransitionName: "login-title" }}
                 >
-                  Sosyal Transkript Sistemi
+                  {t("loginLayout.systemName")}
                 </h4>
               </div>
               <Outlet />
@@ -46,7 +48,7 @@ function LoginLayout() {
                     className="opacity-50"
                     style={{ viewTransitionName: "login-footer" }}
                   >
-                    Copyright İstanbul Nişantaşı Üniversitesi 2023
+                    {t("loginLayout.copyright")}
                   </small>
                 </div>
               </div>
